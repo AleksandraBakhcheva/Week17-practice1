@@ -5,26 +5,25 @@ fio.innerHTML = `<label for="fio">Пожалуйста, введите ФИО:
 <button type="button">Готово</button></label>`;
 document.body.append(fio);
 
+let result;
+
 const button = document.querySelector("button");
+button.addEventListener("click", () => {
+    result.remove();
+});
 button.addEventListener("click", getFIO);
 
 function getFIO() {
     let input = document.querySelector(".fio").value;
     
-    // преобразует к нижнему регистру, в случае если пользователь ввел большими буквами
-    let lowerCaseInput = input.toLowerCase();
-
-    // удаляет пробелы в начале и конце строки
-    let deleteSpaces = lowerCaseInput.trim();
-    
-    // делает заглавной каждую букву слова в строке 
-    let newInput = deleteSpaces.replace(/[a-zа-я]+/gi, (match) => match[0].toUpperCase() + match.substr(1));
+    // преобразует к нижнему регистру, удаляет пробелы в начале и конце строки и делает заглавной каждую букву слова в строке
+    let convertInput = input.toLowerCase().trim().replace(/[a-zа-я]+/gi, (match) => match[0].toUpperCase() + match.substr(1));
 
     // разбивает строку на массив 
-    let array = newInput.split(" ");
+    let array = convertInput.split(" ");
     
     if (array.length > 2) {
-        let result = document.createElement("div");
+        result = document.createElement("div");
         result.classList.add("result");
         result.innerHTML = `<div>
         <label for="surname">Фамилия:</label>
@@ -34,11 +33,13 @@ function getFIO() {
         <div><label for="middle-name">Отчество:</label>
         <input class="middle-name" type="text" id="middle-name" /></div>`;
         document.body.append(result);
+        
         let i = 0;
         getData(".surname");
         i++;
         getData(".name");
         i++
+
         getData(".middle-name");
         function getData(n) {
         document.querySelector(n).value = array[i];   
