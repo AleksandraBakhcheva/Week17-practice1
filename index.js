@@ -11,11 +11,14 @@ const button = document.querySelector("button");
 button.addEventListener("click", getFIO);
 
 function getFIO() {
-
+    
+    if (result !== null) {
     button.addEventListener("click", () => {
     result.remove();
     });
+    }
 
+    
     let input = document.querySelector(".fio").value;
 
     // преобразует к нижнему регистру, удаляет пробелы в начале и конце строки и делает заглавной каждую букву слова в строке
@@ -28,7 +31,6 @@ function getFIO() {
     if (array.length > 2) {
         result = document.createElement("div");
         result.classList.add("result");
-        result.classList.add("hidden");
         result.innerHTML = `<div>
         <label for="surname">Фамилия:</label>
         <input class="surname" type="text" id="surname" /></div>
@@ -52,7 +54,6 @@ function getFIO() {
     else {
         return 0;
     }
-
+    
     input = document.querySelector(".fio").value = "";   
-
 }
