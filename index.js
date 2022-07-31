@@ -11,14 +11,12 @@ const button = document.querySelector("button");
 button.addEventListener("click", getFIO);
 
 function getFIO() {
-    
-    if (result !== null) {
+    if (result) {
     button.addEventListener("click", () => {
     result.remove();
     });
     }
 
-    
     let input = document.querySelector(".fio").value;
 
     // преобразует к нижнему регистру, удаляет пробелы в начале и конце строки и делает заглавной каждую букву слова в строке
