@@ -8,23 +8,27 @@ document.body.append(fio);
 let result;
 
 const button = document.querySelector("button");
-button.addEventListener("click", () => {
-    result.remove();
-});
 button.addEventListener("click", getFIO);
 
 function getFIO() {
+
+    button.addEventListener("click", () => {
+    result.remove();
+    });
+
     let input = document.querySelector(".fio").value;
-    
+
     // преобразует к нижнему регистру, удаляет пробелы в начале и конце строки и делает заглавной каждую букву слова в строке
     let convertInput = input.toLowerCase().trim().replace(/[a-zа-я]+/gi, (match) => match[0].toUpperCase() + match.substr(1));
 
     // разбивает строку на массив 
+    
     let array = convertInput.split(" ");
     
     if (array.length > 2) {
         result = document.createElement("div");
         result.classList.add("result");
+        result.classList.add("hidden");
         result.innerHTML = `<div>
         <label for="surname">Фамилия:</label>
         <input class="surname" type="text" id="surname" /></div>
@@ -50,4 +54,5 @@ function getFIO() {
     }
 
     input = document.querySelector(".fio").value = "";   
+
 }
