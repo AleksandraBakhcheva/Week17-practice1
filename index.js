@@ -12,9 +12,7 @@ button.addEventListener("click", getFIO);
 
 function getFIO() {
     if (result) {
-    button.addEventListener("click", () => {
-    result.remove();
-    });
+        result.remove();
     }
 
     let input = document.querySelector(".fio").value;
